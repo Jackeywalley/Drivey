@@ -8,6 +8,9 @@ type RootStackParamList = {
   Login: undefined;
   Register: undefined;
   Home: undefined;
+  Booking: undefined;
+  Wallet: undefined;
+  Profile: undefined;
 };
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
@@ -41,12 +44,19 @@ export default function HomeScreen() {
         <View style={styles.actions}>
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: isDark ? '#1A1A2E' : '#F9FAFB' }]}
+            onPress={() => navigation.navigate('Booking')}
           >
             <Text style={[
               styles.actionButtonText,
               { color: isDark ? '#F5F5F5' : '#111827' }
             ]}>
-              📍 Book Now
+              🚗 Book Now
+            </Text>
+            <Text style={[
+              styles.actionButtonSubtext,
+              { color: isDark ? '#6B7280' : '#9CA3AF' }
+            ]}>
+              Quick ride booking
             </Text>
           </TouchableOpacity>
 
@@ -58,6 +68,12 @@ export default function HomeScreen() {
               { color: isDark ? '#F5F5F5' : '#111827' }
             ]}>
               📅 Schedule Ride
+            </Text>
+            <Text style={[
+              styles.actionButtonSubtext,
+              { color: isDark ? '#6B7280' : '#9CA3AF' }
+            ]}>
+              Plan ahead
             </Text>
           </TouchableOpacity>
         </View>
@@ -84,39 +100,95 @@ export default function HomeScreen() {
             </Text>
           </View>
         </View>
+
+        <View style={styles.section}>
+          <Text style={[
+            styles.sectionTitle,
+            { color: isDark ? '#F5F5F5' : '#111827' }
+          ]}>
+            Quick Actions
+          </Text>
+          <View style={styles.quickActions}>
+            <TouchableOpacity 
+              style={[styles.quickActionButton, { backgroundColor: isDark ? '#1A1A2E' : '#F9FAFB' }]}
+              onPress={() => navigation.navigate('Wallet')}
+            >
+              <Text style={styles.quickActionIcon}>💰</Text>
+              <Text style={[
+                styles.quickActionText,
+                { color: isDark ? '#F5F5F5' : '#111827' }
+              ]}>
+                Wallet
+              </Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity 
+              style={[styles.quickActionButton, { backgroundColor: isDark ? '#1A1A2E' : '#F9FAFB' }]}
+            >
+              <Text style={styles.quickActionIcon}>📋</Text>
+              <Text style={[
+                styles.quickActionText,
+                { color: isDark ? '#F5F5F5' : '#111827' }
+              ]}>
+                History
+              </Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity 
+              style={[styles.quickActionButton, { backgroundColor: isDark ? '#1A1A2E' : '#F9FAFB' }]}
+            >
+              <Text style={styles.quickActionIcon}>⭐</Text>
+              <Text style={[
+                styles.quickActionText,
+                { color: isDark ? '#F5F5F5' : '#111827' }
+              ]}>
+                Favorites
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ScrollView>
 
       <View style={[styles.tabBar, { backgroundColor: isDark ? '#1A1A2E' : '#F9FAFB' }]}>
         <TouchableOpacity style={styles.tabItem}>
           <Text style={[
             styles.tabText,
-            { color: isDark ? '#F5F5F5' : '#111827' }
+            { color: '#007AFF' }
           ]}>
-            Home
+            🏠 Home
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}>
+        <TouchableOpacity 
+          style={styles.tabItem}
+          onPress={() => navigation.navigate('Booking')}
+        >
           <Text style={[
             styles.tabText,
             { color: isDark ? '#F5F5F5' : '#111827' }
           ]}>
-            Bookings
+            🚗 Bookings
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}>
+        <TouchableOpacity 
+          style={styles.tabItem}
+          onPress={() => navigation.navigate('Wallet')}
+        >
           <Text style={[
             styles.tabText,
             { color: isDark ? '#F5F5F5' : '#111827' }
           ]}>
-            Wallet
+            💰 Wallet
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}>
+        <TouchableOpacity 
+          style={styles.tabItem}
+          onPress={() => navigation.navigate('Profile')}
+        >
           <Text style={[
             styles.tabText,
             { color: isDark ? '#F5F5F5' : '#111827' }
           ]}>
-            Profile
+            👤 Profile
           </Text>
         </TouchableOpacity>
       </View>
@@ -157,6 +229,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+  actionButtonSubtext: {
+    fontSize: 12,
+    marginTop: 4,
+  },
   section: {
     padding: 20,
   },
@@ -178,6 +254,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     opacity: 0.7,
   },
+  quickActions: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  quickActionButton: {
+    flex: 1,
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+    gap: 8,
+  },
+  quickActionIcon: {
+    fontSize: 24,
+  },
+  quickActionText: {
+    fontSize: 12,
+    fontWeight: '500',
+  },
   tabBar: {
     flexDirection: 'row',
     padding: 16,
@@ -189,7 +283,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '500',
   },
 }); 

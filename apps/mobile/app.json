@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "DriveMate",
-    "slug": "drivemate",
+    "name": "Drivey",
+    "slug": "drivey",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -16,32 +16,51 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.drivemate.app"
+      "bundleIdentifier": "com.drivemate.app",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs access to location to show your current location on the map.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app needs access to location to show your current location on the map.",
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.drivemate.app"
+      "package": "com.drivemate.app",
+      "versionCode": 1,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow DriveMate to use your location."
-        }
-      ],
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/notification-icon.png",
-          "color": "#ffffff"
-        }
-      ]
-    ]
+      "expo-router",
+      "expo-location",
+      "expo-notifications",
+      "expo-dev-client"
+    ],
+    "scheme": "drivey",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "enabled": true,
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bad1eb0c-4c78-40a5-8323-ac6eaf32b62a"
+      }
+    }
   }
-} 
+}
